@@ -2,7 +2,6 @@ import torch
 from torch import autocast
 from diffusers import StableDiffusionPipeline, StableDiffusionImg2ImgPipeline
 from PIL import Image, ImageDraw, ImageFont
-import requests
 
 import os
 from dotenv import load_dotenv
@@ -43,8 +42,8 @@ if not SAFETY_CHECKER:
 def image_to_bytes(image):
     bio = BytesIO()
     size = (25, 100)
-    response = requests.get('https://drive.google.com/file/d/1vWT06VEbUqZVYOsI_xe-DXyyLebzzm-d/view?usp=share_link')
-    crop_image = Image.open(BytesIO(response.content))
+    
+    crop_image = Image.open('/content/telegrambotv2/watermark.png'))
     crop_image.thumbnail(size)
     image.paste(crop_image, (500, 500))
     bio.name = 'image.jpeg'
