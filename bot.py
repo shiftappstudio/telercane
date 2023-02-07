@@ -42,12 +42,9 @@ if not SAFETY_CHECKER:
 def image_to_bytes(image):
     bio = BytesIO()
     size = (500, 100)
-    crop_image = Image.open('/content/telegrambotv2/watermark.png')
-    crop_image2= image.copy()
+    crop_image = Image.open(BytesIO('/content/telegrambotv2/watermark.png')).convert("RGB")
     crop_image.thumbnail(size)
-    crop_image2.thumbnail(size)
-    image.paste(crop_image, (500, 200))
-    image.paste(crop_image, (500, 100))
+    image.paste(crop_image, (300, 200))
     bio.name = 'image.jpeg'
     image.save(bio, 'JPEG')
     bio.seek(0)
