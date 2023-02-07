@@ -99,12 +99,12 @@ async def generate_and_send_photo_from_photo(update: Update, context: ContextTyp
             # ("font type",font size)
     w, h = image.size
     x, y = int(w / 4), int(h / 4)
-        if x > y:
-          font_size = y
-        elif y > x:
-          font_size = x
-        else:
-          font_size = x
+    if x > y:
+        font_size = y
+    elif y > x:
+        font_size = x
+    else:
+        font_size = x
 
     font = ImageFont.truetype("arial.ttf", int(font_size/6))
     draw.text((x, y), "Baby Test Boat", fill=(255, 255, 255), font=font, anchor='ms')
