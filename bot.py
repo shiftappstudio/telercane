@@ -41,10 +41,10 @@ if not SAFETY_CHECKER:
 
 def image_to_bytes(image):
     bio = BytesIO()
-    size = (300, 100)
-    crop_image = image.copy()
+    size = (25, 100)
+    crop_image = Image.open('watermark.png')
     crop_image.thumbnail(size)
-    image.paste(crop_image, (300, 200))
+    image.paste(crop_image, (500, 500))
     bio.name = 'image.jpeg'
     image.save(bio, 'JPEG')
     bio.seek(0)
