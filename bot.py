@@ -41,6 +41,10 @@ if not SAFETY_CHECKER:
 
 def image_to_bytes(image):
     bio = BytesIO()
+    size = (300, 100)
+    crop_image = image.copy()
+    crop_image.thumbnail(size)
+    image.paste(crop_image, (300, 200))
     bio.name = 'image.jpeg'
     image.save(bio, 'JPEG')
     bio.seek(0)
@@ -96,10 +100,7 @@ async def generate_and_send_photo_from_photo(update: Update, context: ContextTyp
     photo = await photo_file.download_as_bytearray()
     im, seed = generate_image(prompt=update.message.caption, photo=photo)
     
-    size = (300, 100)
-    crop_image = im.copy()
-    crop_image.thumbnail(size)
-    im.paste(crop_image, (300, 200))
+
             
     
     await context.bot.delete_message(chat_id=progress_msg.chat_id, message_id=progress_msg.message_id)
@@ -119,21 +120,15 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             photo = await photo_file.download_as_bytearray()
             prompt = replied_message.caption
             im, seed = generate_image(prompt, photo=photo)
-            width, height = im.size
+
             
-            size = (300, 100)
-            crop_image = im.copy()
-            crop_image.thumbnail(size)
-            im= im.paste(crop_image, (300, 200))
+
 
         else:
             prompt = replied_message.text
             im, seed = generate_image(prompt)
             
-            size = (300, 100)
-            crop_image = im.copy()
-            crop_image.thumbnail(size)
-            im= im.paste(crop_image, (300, 200))
+
             
     elif query.data == "VARIATIONS":
         photo_file = await query.message.photo[-1].get_file()
@@ -141,10 +136,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         prompt = replied_message.text if replied_message.text is not None else replied_message.caption
         im, seed = generate_image(prompt, photo=photo)
         
-        size = (300, 100)
-        crop_image = im.copy()
-        crop_image.thumbnail(size)
-        im= im.paste(crop_image, (300, 200))
+
         
         
         
