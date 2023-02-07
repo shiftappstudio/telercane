@@ -44,7 +44,7 @@ def image_to_bytes(image):
     size = (500, 100)
     crop_image = Image.open('/content/telegrambotv2/watermark.png')
     crop_image.thumbnail(size)
-    image.paste(crop_image, (300, 200))
+    image.paste(crop_image, (30, 30))
     bio.name = 'image.jpeg'
     image.save(bio, 'JPEG')
     bio.seek(0)
