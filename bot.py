@@ -43,7 +43,7 @@ def image_to_bytes(image):
     bio = BytesIO()
     size = (25, 100)
     
-    crop_image = Image.open('/content/telegrambotv2/watermark.png'))
+    crop_image = Image.open('/content/telegrambotv2/watermark.png')
     crop_image.thumbnail(size)
     image.paste(crop_image, (500, 500))
     bio.name = 'image.jpeg'
