@@ -124,7 +124,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             size = (300, 100)
             crop_image = im.copy()
             crop_image.thumbnail(size)
-            im.paste(crop_image, (300, 200))
+            im= im.paste(crop_image, (300, 200))
 
         else:
             prompt = replied_message.text
@@ -133,9 +133,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             size = (300, 100)
             crop_image = im.copy()
             crop_image.thumbnail(size)
-            im.paste(crop_image, (300, 200))
-            # draw watermark in the bottom right corner
-            draw.text((x, y), text, font=font)
+            im= im.paste(crop_image, (300, 200))
             
     elif query.data == "VARIATIONS":
         photo_file = await query.message.photo[-1].get_file()
@@ -146,7 +144,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         size = (300, 100)
         crop_image = im.copy()
         crop_image.thumbnail(size)
-        im.paste(crop_image, (300, 200))
+        im= im.paste(crop_image, (300, 200))
         
         
         
